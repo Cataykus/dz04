@@ -66,4 +66,17 @@ public class PlayerMovement : MonoBehaviour
             playerRigidbody.velocity = new Vector2(0f, playerRigidbody.velocity.y);
         }
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.TryGetComponent<OpposumMovement>(out OpposumMovement enemy))
+        {
+            Die();
+        }
+    }
+
+    private void Die()
+    {
+        Destroy(gameObject);
+    }
 }
