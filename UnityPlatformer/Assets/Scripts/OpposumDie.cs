@@ -6,7 +6,7 @@ public class OpposumDie : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent<PlayerMovement>(out PlayerMovement player))
+        if (collision.TryGetComponent<Player>(out Player player))
         {
             Destroy(transform.parent.gameObject);
         }
