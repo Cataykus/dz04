@@ -6,7 +6,7 @@ public class PlayerDie : MonoBehaviour
 {
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.CompareTag("Enemy"))
+        if (collision.collider.TryGetComponent<OpposumMovement>(out OpposumMovement enemy))
         {
             Destroy(gameObject);
         }

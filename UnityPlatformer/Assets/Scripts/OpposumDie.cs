@@ -4,13 +4,11 @@ using UnityEngine;
 
 public class OpposumDie : MonoBehaviour
 {
-    [SerializeField] private GameObject _enemy;
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.TryGetComponent<PlayerMovement>(out PlayerMovement player))
         {
-            Destroy(_enemy.gameObject);
+            Destroy(transform.parent.gameObject);
         }
     }
 }

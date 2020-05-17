@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class CheckGround : MonoBehaviour
 {
@@ -8,7 +9,7 @@ public class CheckGround : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Ground"))
+        if (collision.TryGetComponent<TilemapCollider2D>(out TilemapCollider2D ground))
         {
             IsGround = true;
         }
@@ -16,7 +17,7 @@ public class CheckGround : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag("Ground"))
+        if (collision.TryGetComponent<TilemapCollider2D>(out TilemapCollider2D ground))
         {
             IsGround = false;
         }

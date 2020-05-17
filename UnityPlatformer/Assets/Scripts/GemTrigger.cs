@@ -9,7 +9,7 @@ public class GemTrigger : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.TryGetComponent<PlayerMovement>(out PlayerMovement player))
         {
             _getGem.Invoke();
             Destroy(gameObject);
